@@ -74,8 +74,8 @@ export default function Contact() {
               <CardDescription>Speak directly with our team</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-semibold text-gray-900 mb-2">+1 (555) 123-4567</p>
-              <p className="text-gray-600 mb-4">International: +1 (555) 987-6543</p>
+              <p className="text-2xl font-semibold text-gray-900 mb-2">+880 1800000000</p>
+              <p className="text-gray-600 mb-4">International: +880 1800000000</p>
               <div className="flex items-center justify-center text-sm text-gray-500">
                 <Clock className="h-4 w-4 mr-1" />
                 <span>Mon-Fri: 8am - 10pm | Sat-Sun: 9am - 6pm</span>
@@ -135,20 +135,20 @@ export default function Contact() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="first-name">First Name</Label>
-                    <Input id="first-name" placeholder="John" />
+                    <Input id="first-name" placeholder="Enter first name" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" placeholder="Doe" />
+                    <Input id="last-name" placeholder="Enter first name" />
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john.doe@example.com" />
+                  <Input id="email" type="email" placeholder="enter your email" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number (Optional)</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+                  <Input id="phone" type="tel" placeholder="Enter your phone" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="subject">Subject</Label>
@@ -184,8 +184,8 @@ export default function Contact() {
                   <div>
                     <p className="font-medium">Digital Wallet Headquarters</p>
                     <p className="text-gray-600">123 Finance Street, Suite 456</p>
-                    <p className="text-gray-600">San Francisco, CA 94103</p>
-                    <p className="text-gray-600">United States</p>
+                    <p className="text-gray-600">Dhaka</p>
+                    <p className="text-gray-600">Bangladesh</p>
                   </div>
                 </div>
                 <div className="mt-6">
@@ -294,7 +294,7 @@ export default function Contact() {
           <CardContent>
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <p className="text-amber-800 font-medium">
-                Call our emergency line: <span className="font-bold">+1 (555) 911-WALLET</span>
+                Call our emergency line: <span className="font-bold">+880 18XXXXXXXX</span>
               </p>
               <Button className="bg-amber-600 hover:bg-amber-700 whitespace-nowrap">
                 <Phone className="h-4 w-4 mr-2" />

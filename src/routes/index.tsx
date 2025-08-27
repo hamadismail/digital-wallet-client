@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.admin as TRole),
     path: "/admin",
     children: [
-      { index: true, element: <Navigate to="/admin/analytics" /> },
+      { index: true, element: <Navigate to="/admin/overview" /> },
       ...generateRoutes(adminSidebarItems),
     ],
   },
@@ -81,10 +81,6 @@ export const router = createBrowserRouter([
     Component: Register,
     path: "/register",
   },
-  // {
-  //   Component: Verify,
-  //   path: "/verify",
-  // },
   {
     Component: Unauthorized,
     path: "/unauthorized",
