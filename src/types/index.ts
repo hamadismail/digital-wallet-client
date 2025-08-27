@@ -1,4 +1,4 @@
-import {type ComponentType } from "react";
+import { type ComponentType } from "react";
 
 export type { ISendOtp, IVerifyOtp, ILogin } from "./auth.type";
 
@@ -42,4 +42,8 @@ export interface IErrorResponse {
     name: string;
   };
   stack?: string;
+}
+
+export interface ITransaction {
+  amount: number;
 }
