@@ -30,6 +30,15 @@ export const userApi = baseApi.injectEndpoints({
       invalidatesTags: ["DEPOSIT"],
     }),
 
+    updateUser: builder.mutation({
+      query: ({ userId, payload }) => ({
+        url: `/user/${userId}`,
+        method: "PATCH",
+        data: payload,
+      }),
+      invalidatesTags: ["USER"],
+    }),
+
     userOverview: builder.query({
       query: () => ({
         url: "/me/transaction-summary",
@@ -52,6 +61,7 @@ export const {
   useDepositMutation,
   useWithdrawMutation,
   useSendMoneyMutation,
+  useUpdateUserMutation,
   useUserOverviewQuery,
   useAllUserQuery,
 } = userApi;
