@@ -33,20 +33,25 @@ import {
 } from "recharts";
 import type { ITransaction } from "@/types";
 
-// Mock data for charts (you can replace with real data from your API)
-const monthlyData = [
-  { month: "Jan", cashIn: 4500, send: 3200, withdraw: 1800 },
-  { month: "Feb", cashIn: 5200, send: 3800, withdraw: 2100 },
-  { month: "Mar", cashIn: 4800, send: 3500, withdraw: 1900 },
-  { month: "Apr", cashIn: 6100, send: 4200, withdraw: 2300 },
-  { month: "May", cashIn: 5500, send: 3900, withdraw: 2000 },
-  { month: "Jun", cashIn: 7200, send: 5100, withdraw: 2800 },
-];
-
-// const COLORS = ['#10b981', '#3b82f6', '#ef4444'];
-
 export default function Overview() {
   const { data, isLoading, isError } = useUserOverviewQuery(undefined);
+
+  const { send, withdraw, cashIn } = data?.data || {};
+  const totalTransactions = send?.count + withdraw?.count + cashIn?.count;
+  const netFlow = cashIn?.amount - (send?.amount + withdraw?.amount);
+
+  // Prepare data for pie chart
+  const pieChartData = [
+    { name: "Cash In", value: cashIn?.amount, color: "#10b981" },
+    { name: "Send", value: send?.amount, color: "#3b82f6" },
+    { name: "Withdraw", value: withdraw?.amount, color: "#ef4444" },
+  ];
+
+  const barChartData = [
+    { type: "Send", amount: send?.amount, color: "#10b981" },
+    { type: "Withdraw", amount: withdraw?.amount, color: "#3b82f6" },
+    { type: "Cash In", amount: cashIn?.amount, color: "#ef4444" },
+  ];
 
   if (isLoading) {
     return (
@@ -72,17 +77,6 @@ export default function Overview() {
       </div>
     );
   }
-
-  const { send, withdraw, cashIn } = data.data;
-  const totalTransactions = send.count + withdraw.count + cashIn.count;
-  const netFlow = cashIn.amount - (send.amount + withdraw.amount);
-
-  // Prepare data for pie chart
-  const pieChartData = [
-    { name: "Cash In", value: cashIn.amount, color: "#10b981" },
-    { name: "Send", value: send.amount, color: "#3b82f6" },
-    { name: "Withdraw", value: withdraw.amount, color: "#ef4444" },
-  ];
 
   return (
     <div className="p-6 space-y-8 bg-gray-50 min-h-screen">
@@ -204,25 +198,29 @@ export default function Overview() {
 
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Monthly Trend Chart */}
+        {/* Distribution Bar Chart */}
         <Card>
           <CardHeader>
             <CardTitle>Monthly Transaction Trends</CardTitle>
-            <CardDescription>
-              Your activity over the past 6 months
-            </CardDescription>
+            <CardDescription>Your activity overview</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={monthlyData}>
+                <BarChart
+                  data={barChartData}
+                  margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
+                  <XAxis dataKey="type" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="cashIn" fill="#10b981" name="Cash In" />
-                  <Bar dataKey="send" fill="#3b82f6" name="Money Sent" />
-                  <Bar dataKey="withdraw" fill="#ef4444" name="Withdrawals" />
+                  {/* <Bar dataKey="amount" fill="#3b82f6" /> */}
+                  <Bar dataKey="amount">
+                    {barChartData.map((entry, index) => (
+                      <Cell key={index} fill={entry.color} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
