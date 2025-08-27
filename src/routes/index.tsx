@@ -15,6 +15,7 @@ import About from "@/pages/About";
 import Features from "@/pages/Features";
 import Pricing from "@/pages/Pricing";
 import FAQ from "@/pages/FAQ";
+import { agentSidebarItems } from "./agentSidebarItems";
 
 export const router = createBrowserRouter([
   {
@@ -53,6 +54,14 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/admin/analytics" /> },
       ...generateRoutes(adminSidebarItems),
+    ],
+  },
+  {
+    Component: withAuth(DashboardLayout, role.agent as TRole),
+    path: "/admin",
+    children: [
+      { index: true, element: <Navigate to="/agent/analytics" /> },
+      ...generateRoutes(agentSidebarItems),
     ],
   },
   {
