@@ -1,8 +1,8 @@
 // import Analytics from "@/pages/Admin/Analytics";
 import AddMoney from "@/pages/Agent/AddMoney";
-import Overview from "@/pages/Agent/Overview";
+// import Overview from "@/pages/Agent/Overview";
 import Profile from "@/pages/Agent/Profile";
-import TransactionHistory from "@/pages/Agent/TransactionHistory";
+// import TransactionHistory from "@/pages/Agent/TransactionHistory";
 import Withdraw from "@/pages/Agent/Withdraw";
 import { type ISidebarItem } from "@/types";
 // import { lazy } from "react";
@@ -13,11 +13,11 @@ export const agentSidebarItems: ISidebarItem[] = [
   {
     title: "Agent Dashboard",
     items: [
-      {
-        title: "Overview",
-        url: "/agent/overview",
-        component: Overview,
-      },
+      // {
+      //   title: "Overview",
+      //   url: "/agent/overview",
+      //   component: Overview,
+      // },
       {
         title: "Add Money",
         url: "/agent/add-money",
@@ -28,11 +28,11 @@ export const agentSidebarItems: ISidebarItem[] = [
         url: "/agent/withdraw",
         component: Withdraw,
       },
-      {
-        title: "Transaction History",
-        url: "/agent/transaction-history",
-        component: TransactionHistory,
-      },
+      // {
+      //   title: "Transaction History",
+      //   url: "/agent/transaction-history",
+      //   component: TransactionHistory,
+      // },
       {
         title: "Profile",
         url: "/agent/profile",
