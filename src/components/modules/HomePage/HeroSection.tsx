@@ -18,8 +18,8 @@ export default function HeroSection() {
             </div>
             <div>
               <h1 className="mb-6 text-2xl font-bold tracking-tight text-pretty lg:text-5xl">
-                Explore the beauty of{" "}
-                <span className="text-primary">Bangladesh</span>
+                Turn Every Payment into a{" "}
+                <span className="text-primary">Style Statement</span>
               </h1>
               <p className="mx-auto max-w-3xl text-muted-foreground lg:text-xl">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig
