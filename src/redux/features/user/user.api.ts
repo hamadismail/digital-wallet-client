@@ -1,6 +1,5 @@
 import { baseApi } from "@/redux/baseApi";
 
-
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     deposit: builder.mutation({
@@ -11,19 +10,14 @@ export const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["DEPOSIT"],
     }),
-    logout: builder.mutation({
-      query: () => ({
-        url: "/auth/logout",
+
+    withdraw: builder.mutation({
+      query: (depositAmount) => ({
+        url: "/user/withdraw",
         method: "POST",
+        data: depositAmount,
       }),
-      invalidatesTags: ["USER"],
-    }),
-    register: builder.mutation({
-      query: (userInfo) => ({
-        url: "/user/register",
-        method: "POST",
-        data: userInfo,
-      }),
+      invalidatesTags: ["DEPOSIT"],
     }),
 
     userOverview: builder.query({
@@ -38,7 +32,6 @@ export const userApi = baseApi.injectEndpoints({
 
 export const {
   useDepositMutation,
-  useRegisterMutation,
+  useWithdrawMutation,
   useUserOverviewQuery,
-  useLogoutMutation,
 } = userApi;
