@@ -10,6 +10,11 @@ import { type TRole } from "@/types";
 import Homepage from "@/pages/Homepage";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import Contact from "@/pages/Contact";
+import About from "@/pages/About";
+import Features from "@/pages/Features";
+import Pricing from "@/pages/Pricing";
+import FAQ from "@/pages/FAQ";
 
 export const router = createBrowserRouter([
   {
@@ -19,6 +24,26 @@ export const router = createBrowserRouter([
       {
         Component: Homepage,
         index: true,
+      },
+      {
+        Component: About,
+        path: "about",
+      },
+      {
+        Component: Features,
+        path: "feature",
+      },
+      {
+        Component: Pricing,
+        path: "pricing",
+      },
+      {
+        Component: Contact,
+        path: "contact",
+      },
+      {
+        Component: FAQ,
+        path: "faq",
       },
     ],
   },

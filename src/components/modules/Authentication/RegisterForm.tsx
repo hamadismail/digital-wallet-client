@@ -17,6 +17,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Password from "@/components/ui/Password";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { role } from "@/constants/role";
 
 const registerSchema = z
   .object({
@@ -44,6 +52,7 @@ const registerSchema = z
     confirmPassword: z
       .string()
       .min(8, { error: "Confirm Password is too short" }),
+    role: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Password do not match",
@@ -64,6 +73,7 @@ export function RegisterForm({
       email: "",
       password: "",
       confirmPassword: "",
+      role: "",
     },
   });
 
@@ -72,6 +82,7 @@ export function RegisterForm({
       name: data.name,
       email: data.email,
       password: data.password,
+      role: data.role,
     };
 
     try {
@@ -164,25 +175,53 @@ export function RegisterForm({
                 </FormItem>
               )}
             />
+
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Role</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select Role" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value={role.user}>{role.user}</SelectItem>
+                      <SelectItem value={role.agent}>{role.agent}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormDescription className="sr-only">
+                    Your form data{" "}
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button type="submit" className="w-full">
               Submit
             </Button>
           </form>
         </Form>
 
-        <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
+        {/* <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
           <span className="relative z-10 bg-background px-2 text-muted-foreground">
             Or continue with
           </span>
-        </div>
+        </div> */}
 
-        <Button
+        {/* <Button
           type="button"
           variant="outline"
           className="w-full cursor-pointer"
         >
           Login with Google
-        </Button>
+        </Button> */}
       </div>
 
       <div className="text-center text-sm">
