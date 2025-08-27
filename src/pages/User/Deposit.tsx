@@ -165,6 +165,7 @@ export default function Deposit() {
                                 placeholder="0.00"
                                 className="text-lg py-6 pl-12 pr-4"
                                 {...field}
+                                value={field.value === 0 ? "" : field.value}
                                 onChange={(e) =>
                                   field.onChange(Number(e.target.value))
                                 }

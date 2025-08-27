@@ -12,11 +12,21 @@ export const userApi = baseApi.injectEndpoints({
     }),
 
     withdraw: builder.mutation({
-      query: (depositAmount) => ({
+      query: (withdrawAmount) => ({
         url: "/user/withdraw",
         method: "POST",
-        data: depositAmount,
+        data: withdrawAmount,
       }),
+      invalidatesTags: ["DEPOSIT"],
+    }),
+
+    sendMoney: builder.mutation({
+      query: (sendAmount) => ({
+        url: "/user/send",
+        method: "POST",
+        data: sendAmount,
+      }),
+
       invalidatesTags: ["DEPOSIT"],
     }),
 
@@ -27,11 +37,21 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ["DEPOSIT"],
     }),
+
+    allUser: builder.query({
+      query: () => ({
+        url: "/user/all-users",
+        method: "GET",
+      }),
+      providesTags: ["USER"],
+    }),
   }),
 });
 
 export const {
   useDepositMutation,
   useWithdrawMutation,
+  useSendMoneyMutation,
   useUserOverviewQuery,
+  useAllUserQuery,
 } = userApi;

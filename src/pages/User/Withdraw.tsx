@@ -69,7 +69,7 @@ export default function Withdraw() {
   const form = useForm<WithdrawFormValues>({
     resolver: zodResolver(withdrawSchema),
     defaultValues: {
-      amount: undefined,
+      amount: 0,
       method: "",
       accountNumber: "",
     },
@@ -212,6 +212,7 @@ export default function Withdraw() {
                                 placeholder="0.00"
                                 className="text-lg py-6 pl-12 pr-4"
                                 {...field}
+                                value={field.value === 0 ? "" : field.value}
                                 onChange={(e) =>
                                   field.onChange(Number(e.target.value))
                                 }
