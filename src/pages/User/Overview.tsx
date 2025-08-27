@@ -10,7 +10,7 @@ import { Loader2, Wallet, ArrowDown, ArrowUp } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 
 export default function Overview() {
-  const { data, isLoading, isError } = useUserOverviewQuery();
+  const { data, isLoading, isError } = useUserOverviewQuery(undefined);
 
   if (isLoading) {
     return (
