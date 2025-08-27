@@ -16,6 +16,7 @@ import Features from "@/pages/Features";
 import Pricing from "@/pages/Pricing";
 import FAQ from "@/pages/FAQ";
 import { agentSidebarItems } from "./agentSidebarItems";
+import Unauthorized from "@/pages/Unauthorized";
 
 export const router = createBrowserRouter([
   {
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.agent as TRole),
     path: "/agent",
     children: [
-      { index: true, element: <Navigate to="/agent/analytics" /> },
+      { index: true, element: <Navigate to="/agent/overview" /> },
       ...generateRoutes(agentSidebarItems),
     ],
   },
@@ -84,8 +85,8 @@ export const router = createBrowserRouter([
   //   Component: Verify,
   //   path: "/verify",
   // },
-  // {
-  //   Component: Unauthorized,
-  //   path: "/unauthorized",
-  // },
+  {
+    Component: Unauthorized,
+    path: "/unauthorized",
+  },
 ]);
