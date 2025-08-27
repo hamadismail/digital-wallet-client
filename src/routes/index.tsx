@@ -8,6 +8,8 @@ import { withAuth } from "@/utils/withAuth";
 import { role } from "@/constants/role";
 import { type TRole } from "@/types";
 import Homepage from "@/pages/Homepage";
+import Login from "@/pages/Login";
+import Register from "@/pages/Register";
 
 export const router = createBrowserRouter([
   {
@@ -36,14 +38,14 @@ export const router = createBrowserRouter([
       ...generateRoutes(userSidebarItems),
     ],
   },
-  // {
-  //   Component: Login,
-  //   path: "/login",
-  // },
-  // {
-  //   Component: Register,
-  //   path: "/register",
-  // },
+  {
+    Component: Login,
+    path: "/login",
+  },
+  {
+    Component: Register,
+    path: "/register",
+  },
   // {
   //   Component: Verify,
   //   path: "/verify",
